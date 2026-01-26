@@ -20,14 +20,37 @@ jobs:
     - name: Install PyInstaller
       run: pip install pyinstaller
     
-    - name: Build executable
+    - name: Build with .spec
       run: |
+        echo "=== Building PyCat ==="
+        echo "Current directory:"
+        pwd
+        echo ""
+        echo "Files in current directory:"
+        ls -la
+        echo ""
+        echo "Spec file contents:"
+        cat pycat.spec | grep -A5 -B5 "name="
+        echo ""
+        
         # Build
         pyinstaller pycat.spec
+        
+        echo ""
+        echo "=== After build ==="
+        echo "dist folder contents:"
+        ls -la dist/ || echo "dist folder doesn't exist"
+        echo ""
+        echo "All .exe files:"
+        find . -name "*.exe" -type f 2>/dev/null || echo "No .exe files found"
     
-    - name: Upload artifact
+    - name: Upload ANY executable found
       uses: actions/upload-artifact@v4
       with:
-        name: pycat-windows
-        path: dist/*.exe
-        if-no-files-found: error  # This will fail if file doesn't exist
+        name: pycat-build
+        path: |
+          dist/*.exe
+          dist/*.app
+          *.exe
+          build/*.exe
+        if-no-files-found: error
