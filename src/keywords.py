@@ -166,11 +166,11 @@ def translate(code: str) -> str:
             code = re.sub(pattern, python_word, code)
     
     # Second pass: handle special functions
-    code = code.replace('Purr(', 'print("😺 " + str(')
-    code = code.replace('Hiss(', 'print("😾 " + str(')
+    code = code.replace('Purr(', 'print(":3 " + str(')
+    code = code.replace('Hiss(', 'print(":( " + str(')
     code = code.replace('CatNap(', 'time.sleep(')
-    code = code.replace('ChaseMouse()', 'random.choice(["🐭", "🧀", "🎣"])')
-    code = code.replace('RandomCat()', 'random.choice(["😸", "😹", "😺", "😻", "😼", "😽"])')
+    code = code.replace('ChaseMouse()', 'random.choice([":>", ":0", "<:>"])')
+    code = code.replace('RandomCat()', 'random.choice([":3", ":)", ":>", ":\", ":1", ":33"])')
     code = code.replace('CatNow()', 'datetime.datetime.now()')
     
     # Add imports if needed
