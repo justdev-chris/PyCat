@@ -23,11 +23,7 @@ jobs:
     - name: Build executable
       run: |
         # Build
-        pyinstaller --onefile --name pycat pycat.spec
-        
-        # Verify file exists
-        dir dist\
-        echo "File size:" (Get-Item "dist\pycat.exe").Length "bytes"
+        pyinstaller pycat.spec
     
     - name: Upload artifact
       uses: actions/upload-artifact@v4
