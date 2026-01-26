@@ -59,15 +59,19 @@ def run_file(filename):
         sys.exit(1)
     
     try:
-        with open(filename, 'r', encoding='utf-8') as f:
-            pycat_code = f.read()
+        # Read file with encoding fallback
+        with open(filename, 'rb') as f:
+            raw = f.read()
+        
+        # Try UTF-8, fallback to latin-1
+        try:
+            pycat_code = raw.decode('utf-8')
+        except UnicodeDecodeError:
+            pycat_code = raw.decode('latin-1')
         
         python_code = translate(pycat_code)
         exec(python_code)
         
-    except FileNotFoundError:
-        print(f"❌ File '{filename}' not found!")
-        sys.exit(1)
     except Exception as e:
         print(f"🐾 PyCat Error: {type(e).__name__}: {e}")
         sys.exit(1)
