@@ -35,7 +35,3 @@ jobs:
       with:
         name: pycat-windows
         path: dist/pycat.exe
-        # Tag and create GitHub release
-        git tag v1.0.${{ github.run_number }}
-        git push origin v1.0.${{ github.run_number }}
-      continue-on-error: true
