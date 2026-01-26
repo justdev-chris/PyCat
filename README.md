@@ -134,4 +134,4 @@ MIT License - do whatever you want with cats!
 
 ---
 
-*Made with 😸 and too much catnip*
+*Made with many 😸 and too much catnip*
