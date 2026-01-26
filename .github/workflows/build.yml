@@ -28,7 +28,7 @@ jobs:
     - name: Build executable
       run: |
         # Build using your existing pycat_entry.py
-        pyinstaller --onefile --name pycat pycat_entry.py
+        pyinstaller pycat.spec
     
     - name: Upload artifact
       uses: actions/upload-artifact@v4
