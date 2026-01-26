@@ -135,9 +135,3 @@ MIT License - do whatever you want with cats!
 ---
 
 *Made with 😸 and too much catnip*
-
-
-
-7. Your personal brand (13-year-old dev)
-
-**Perfect for GitHub!**
