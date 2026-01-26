@@ -1,6 +1,6 @@
 import sys
 import os
-from .keywords import translate
+from keywords import translate
 
 def run():
     """Main entry point - runs PyCat code"""
