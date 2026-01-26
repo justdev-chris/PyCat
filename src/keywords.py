@@ -152,33 +152,30 @@ CAT_TO_PYTHON = {
     'NoCatnip': '{}',
 }
 
-# Special handlers for functions that need extra processing
-SPECIAL_HANDLERS = ['Purr', 'Hiss', 'CatNap', 'ChaseMouse', 'RandomCat', 'CatNow']
-
 def translate(code: str) -> str:
     """Convert PyCat to Python with special handling"""
     # First pass: replace all regular keywords
     for cat_word, python_word in CAT_TO_PYTHON.items():
-        if cat_word not in SPECIAL_HANDLERS:
-            # Replace whole words only (using word boundaries)
-            import re
-            pattern = r'\b' + re.escape(cat_word) + r'\b'
-            code = re.sub(pattern, python_word, code)
+        # Replace whole words only
+        import re
+        pattern = r'\b' + re.escape(cat_word) + r'\b'
+        code = re.sub(pattern, python_word, code)
     
-    # Second pass: handle special functions
-    code = code.replace("Purr(", 'print(":3 " + str(')
-    code = code.replace("Hiss(", 'print(":( " + str(')
-    code = code + ")" if "print(\":3 \" + str(" in code else code
+    # Fix Purr and Hiss properly
+    # Purr("text") → print(":3 text")
+    code = re.sub(r'Purr\("(.*?)"\)', r'print(":3 \1")', code)
+    # Hiss("text") → print(":( text")  
+    code = re.sub(r'Hiss\("(.*?)"\)', r'print(":( \1")', code)
+    
+    # Other special functions
     code = code.replace('CatNap(', 'time.sleep(')
-    code = code.replace("ChaseMouse()", "'bonuscats'")
-    code = code.replace("RandomCat()", "'cat'")
+    code = code.replace('ChaseMouse()', "'mouse'")
+    code = code.replace('RandomCat()', "'cat'")
     code = code.replace('CatNow()', 'datetime.datetime.now()')
     
     # Add imports if needed
     if 'time.sleep' in code:
         code = 'import time\n' + code
-    if 'random.choice' in code:
-        code = 'import random\n' + code
     if 'datetime.datetime.now' in code:
         code = 'import datetime\n' + code
     
