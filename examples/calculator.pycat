@@ -1,5 +1,5 @@
 # PyCat Calculator
-Purr("🧮 PyCat Calculator")
+Purr("PyCat Calculator")
 Meow("=" * 40)
 
 WhileChasing Pawsitive:
@@ -13,7 +13,7 @@ WhileChasing Pawsitive:
     choice CatGets Beg("\nChoose (1-5): ")
     
     IfHungry choice SameAs "5":
-        Meow("Goodbye! 🐱")
+        Meow("Goodbye!")
         Scratch
     
     num1 CatGets ToFloatCat(Beg("First number: "))
