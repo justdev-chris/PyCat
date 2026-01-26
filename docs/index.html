@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐱 PyCat - Cat-Themed Programming Language</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: #ff6b8b;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        .btn-primary {
+            background: #ff6b8b;
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        
+        .feature-card .emoji {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .code-demo {
+            background: #1e1e1e;
+            color: #f8f8f8;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 50px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        
+        .code-keyword {
+            color: #ff6b8b;
+        }
+        
+        .code-string {
+            color: #98c379;
+        }
+        
+        .code-comment {
+            color: #5c6370;
+        }
+        
+        .code-function {
+            color: #61afef;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            color: #666;
+        }
+        
+        .author {
+            font-size: 1.2rem;
+            color: #ff6b8b;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐱 PyCat</h1>
+            <p class="subtitle">A cat-themed programming language that makes coding purr-fect!</p>
+            <p>Write code with cat-themed keywords. Run it anywhere. Have fun! 🎉</p>
+            
+            <div class="cta-buttons">
+                <a href="#download" class="btn btn-primary">📥 Download PyCat</a>
+                <a href="#examples" class="btn btn-secondary">👀 See Examples</a>
+                <a href="https://github.com/yourusername/pycat" class="btn btn-secondary" target="_blank">💻 View Source</a>
+            </div>
+        </header>
+        
+        <section class="features">
+            <div class="feature-card">
+                <div class="emoji">😸</div>
+                <h3>Fun Syntax</h3>
+                <p>Use <code class="code-keyword">Meow</code> instead of <code>print</code>, <code class="code-keyword">CatGets</code> instead of <code>=</code>. Programming should be fun!</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="emoji">⚡</div>
+                <h3>Runs Everywhere</h3>
+                <p>Compiles to Python, so it works on Windows, Mac, Linux. Also compiles to single EXE with PyInstaller!</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="emoji">🎮</div>
+                <h3>Learn Through Cats</h3>
+                <p>Perfect for beginners. Cat-themed keywords make programming concepts easy to remember and understand.</p>
+            </div>
+        </section>
+        
+        <section class="code-demo" id="examples">
+            <h2 style="color: white; margin-bottom: 20px;">✨ Example Code</h2>
+            <pre><code><span class="code-comment"># Hello World in PyCat</span>
+<span class="code-keyword">Meow</span>(<span class="code-string">"Hello from PyCat! 🐱"</span>)
+<span class="code-comment"></span>
+<span class="code-comment"># Variables and math</span>
+x <span class="code-keyword">CatGets</span> 10
+y <span class="code-keyword">CatGets</span> 3
+<span class="code-keyword">Meow</span>(<span class="code-string">"10 PlusCat 3 = "</span> <span class="code-keyword">CatSpeak</span>(x <span class="code-keyword">PlusCat</span> y))
+<span class="code-comment"></span>
+<span class="code-comment"># Conditionals</span>
+<span class="code-keyword">IfHungry</span> x <span class="code-keyword">BiggerCat</span> 5:
+    <span class="code-keyword">Purr</span>(<span class="code-string">"Big number!"</span>)  <span class="code-comment"># 😺 print</span>
+<span class="code-comment"></span>
+<span class="code-comment"># Loops</span>
+<span class="code-keyword">ForPrey</span> i <span class="code-keyword">InLitterbox</span> <span class="code-function">CatRange</span>(5):
+    <span class="code-keyword">Meow</span>(<span class="code-string">"Cat #"</span> <span class="code-keyword">CatSpeak</span>(i))</code></pre>
+        </section>
+        
+        <section style="background: white; padding: 40px; border-radius: 15px; margin: 50px 0;">
+            <h2 style="color: #667eea; margin-bottom: 30px;">🚀 Quick Start</h2>
+            
+            <div style="display: grid; gap: 20px;">
+                <div>
+                    <h3>1. Download</h3>
+                    <p>Get the <code>pycat.exe</code> from our GitHub Releases.</p>
+                </div>
+                
+                <div>
+                    <h3>2. Create a .pycat file</h3>
+                    <pre style="background: #f5f5f5; padding: 15px; border-radius: 8px; overflow-x: auto;">
+# hello.pycat
+Meow("Hello World!")</pre>
+                </div>
+                
+                <div>
+                    <h3>3. Run it!</h3>
+                    <pre style="background: #f5f5f5; padding: 15px; border-radius: 8px;">
+pycat hello.pycat</pre>
+                </div>
+            </div>
+            
+            <div id="download" style="text-align: center; margin-top: 40px;">
+                <a href="https://github.com/yourusername/pycat/releases" class="btn btn-primary" target="_blank" style="font-size: 1.5rem; padding: 20px 40px;">
+                    📥 Download Latest Release
+                </a>
+                <p style="margin-top: 15px; color: #666;">Windows EXE • macOS App • Linux Binary</p>
+            </div>
+        </section>
+        
+        <section style="background: rgba(255, 255, 255, 0.95); padding: 40px; border-radius: 15px; margin: 50px 0;">
+            <h2 style="color: #667eea; margin-bottom: 30px;">📚 Language Reference</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <div>
+                    <h4>Basic Keywords</h4>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li><code>Meow</code> → print</li>
+                        <li><code>Beg</code> → input</li>
+                        <li><code>CatGets</code> → =</li>
+                        <li><code>IfHungry</code> → if</li>
+                        <li><code>Otherwise</code> → else</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4>Loops & Functions</h4>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li><code>ForPrey</code> → for</li>
+                        <li><code>WhileChasing</code> → while</li>
+                        <li><code>Defur</code> → def</li>
+                        <li><code>Fetch</code> → return</li>
+                        <li><code>Scratch</code> → break</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4>Special Functions</h4>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li><code>Purr()</code> → 😺 print</li>
+                        <li><code>Hiss()</code> → 😾 print</li>
+                        <li><code>RandomCat()</code> → random cat emoji</li>
+                        <li><code>ChaseMouse()</code> → random mouse item</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="https://github.com/yourusername/pycat/blob/main/docs/REFERENCE.md" class="btn btn-secondary" target="_blank">
+                    📖 Full Language Reference
+                </a>
+            </div>
+        </section>
+        
+        <footer>
+            <p>🐱 Made with love and too much catnip</p>
+            <p class="author">Created by justdev-chris</p>
+            <p style="margin-top: 20px;">
+                <a href="https://github.com/justdev-chris/PyCat" style="color: #667eea; margin: 0 10px;">GitHub</a> •
+                <a href="https://catsdevs.online" style="color: #667eea; margin: 0 10px;">Website</a> •
+            </p>
+            <p style="margin-top: 20px; font-size: 0.9rem; color: #999;">
+                © 2026 PyCat • All cat puns intended
+            </p>
+        </footer>
+    </div>
+    
+    <script>
+        // Simple animation for feature cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.feature-card');
+            
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+            
+            // Make code keywords colorful
+            const codeElements = document.querySelectorAll('code');
+            codeElements.forEach(el => {
+                if (el.textContent.includes('Meow') || el.textContent.includes('CatGets') || 
+                    el.textContent.includes('IfHungry') || el.textContent.includes('Purr')) {
+                    el.style.color = '#ff6b8b';
+                    el.style.fontWeight = 'bold';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
