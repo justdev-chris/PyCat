@@ -150,5 +150,5 @@
     'NoCatnip': '{}',
 
 
-- Special handlers for functions that need extra processing
-- SPECIAL HANDLERS = ['Purr', 'Hiss', 'CatNap', 'ChaseMouse', 'RandomCat', 'CatNow']
+- NO SPECIAL HANDLERS
+
