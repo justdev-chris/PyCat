@@ -133,8 +133,6 @@ CAT_TO_PYTHON = {
     'FetchCatnip': '__import__',
     
     # === SPECIAL FUNCTIONS ===
-    'Purr': '_cat_happy_print',
-    'Hiss': '_cat_angry_print',
     'CatNap': '_cat_sleep',
     'Pounce': 'print',
     'ChaseMouse': '_chase_mouse',
