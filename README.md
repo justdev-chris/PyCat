@@ -72,12 +72,12 @@ result CatGets x TimesCat y
 ## 🛠️ Installation
 
 ### Method 1: Download Executable
-1. Download `pycat.exe` from [Releases](https://github.com/justdev-chris/PyCat/releases)
-2. Run: `pycat.exe myprogram.pycat`
+1. Download `PyCat.zip` from [Releases](https://github.com/justdev-chris/PyCat/releases)
+2. Run: `SETUP.bat`
 
 ### Method 2: Build from Source
 ```bash
-git clone https://github.com/yourname/pycat.git
+git clone https://github.com/justdev-chris/pycat.git
 cd pycat
 pip install pyinstaller
 pyinstaller pycat.spec
