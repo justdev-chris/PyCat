@@ -53,5 +53,5 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: pycat-build
-        path: build/pycat.exe
+        path: build/pycat/pycat.exe
         if-no-files-found: error
