@@ -2,36 +2,36 @@ name: Build PyCat
 
 on:
   push:
-    branches: [main, master]
+    branches: [main]
   pull_request:
-    branches: [main, master]
-  workflow_dispatch:
+    branches: [main]
 
 jobs:
-  build-windows:
+  build:
     runs-on: windows-latest
     
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v4
     
-    - name: Setup Python
-      uses: actions/setup-python@v5
+    - uses: actions/setup-python@v5
       with:
         python-version: '3.10'
     
     - name: Install PyInstaller
-      run: |
-        python -m pip install --upgrade pip
-        pip install pyinstaller
+      run: pip install pyinstaller
     
     - name: Build executable
       run: |
-        # Build using your existing pycat_entry.py
-        pyinstaller pycat.spec
+        # Build
+        pyinstaller --onefile --name pycat pycat.spec
+        
+        # Verify file exists
+        dir dist\
+        echo "File size:" (Get-Item "dist\pycat.exe").Length "bytes"
     
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
         name: pycat-windows
         path: dist/pycat.exe
+        if-no-files-found: error  # This will fail if file doesn't exist
