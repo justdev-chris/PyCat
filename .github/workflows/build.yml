@@ -1,4 +1,4 @@
-name: Build Pycat
+name: Build PyCat
 
 on:
   push:
@@ -11,24 +11,34 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - name: checkout repo
+    - name: Checkout code
       uses: actions/checkout@v3
-
-    - name: set python up
+    
+    - name: Setup Python
       uses: actions/setup-python@v4
       with:
-        python-version: 3.10
-
-    - name: install the dependencies
+        python-version: '3.10'
+    
+    - name: Install PyInstaller
       run: |
         python -m pip install --upgrade pip
-        pip install pyinstaller 
-    - name: build exe
+        pip install pyinstaller
+    
+    - name: Create entry point
       run: |
-        pyinstaller --onefile --console src/main.py --icon=src/media/app.ico
-
-    - name: upload to artifacts
+        # Create a simple entry point in root
+        echo "import sys" > pycat_entry.py
+        echo "sys.path.insert(0, 'src')" >> pycat_entry.py
+        echo "from main import run" >> pycat_entry.py
+        echo "if __name__ == '__main__':" >> pycat_entry.py
+        echo "    run()" >> pycat_entry.py
+    
+    - name: Build executable
+      run: |
+        pyinstaller --onefile --name pycat pycat_entry.py
+    
+    - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
-        name: build
-        path: dist/app.exe
+        name: pycat-executable
+        path: dist/pycat.exe
