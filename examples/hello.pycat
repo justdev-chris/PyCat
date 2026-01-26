@@ -1,0 +1,21 @@
+# Hello World in PyCat
+Meow("🐱 Welcome to PyCat Language!")
+Meow("=" * 40)
+
+name CatGets Beg("What's your name? ")
+Purr(f"Hello, {name}! 🎉")
+
+age CatGets ToCatYears(Beg("How old are you? "))
+
+IfHungry age BiggerCat 18:
+    Meow("You're an adult!")
+ElseIf age BiggerCat 12:
+    Meow("You're a teenager!")
+Otherwise:
+    Meow("You're a kid!")
+
+Meow("\nCounting cats...")
+ForPrey i InLitterbox CatRange(1, 6):
+    Meow(f"Cat #{i}: {RandomCat()}")
+
+Meow("\n🐾 Program finished!")
