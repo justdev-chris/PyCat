@@ -1,0 +1,71 @@
+# Guess the Cat's Number Game
+Purr("🎮 Guess the Cat's Number!")
+Meow("=" * 40)
+
+score CatGets 0
+
+Defur play_round(round_num):
+    Unleash score
+    
+    Meow(f"\n--- Round {round_num} ---")
+    secret CatGets CatRandom().randint(1, 10)
+    attempts CatGets 0
+    max_attempts CatGets 4
+    
+    Meow("I'm thinking of a number 1-10...")
+    
+    WhileChasing attempts SmallerCat max_attempts:
+        guess CatGets ToCatYears(Beg(f"Guess {attempts PlusCat 1}/{max_attempts}: "))
+        
+        IfHungry guess SmallerCat 1 OrCat guess BiggerCat 10:
+            Hiss("Please guess 1-10!")
+            KeepGoing
+        
+        attempts PlusGets 1
+        
+        IfHungry guess SameAs secret:
+            Purr(f"🎉 Correct! It took {attempts} tries.")
+            score PlusGets max_attempts MinusCat attempts PlusCat 1
+            Fetch Pawsitive
+        ElseIf guess SmallerCat secret:
+            Meow("Too low! " + ChaseMouse())
+        Otherwise:
+            Meow("Too high! " + ChaseMouse())
+    
+    Hiss(f"😿 Out of tries! Number was {secret}")
+    Fetch Mew
+
+# Main game
+Meow("\nCan you guess the cat's secret number?")
+Meow("You have 4 tries per round.")
+Meow("Score = (4 - tries + 1) points")
+
+round_num CatGets 1
+WhileChasing round_num SmallerCat 4:
+    won CatGets play_round(round_num)
+    
+    IfHungry won:
+        play_again CatGets Beg("Play next round? (y/n): ")
+        IfHungry play_again.lower() NotSame "y":
+            Scratch
+    Otherwise:
+        play_again CatGets Beg("Try again? (y/n): ")
+        IfHungry play_again.lower() SameAs "y":
+            KeepGoing
+        Otherwise:
+            Scratch
+    
+    round_num PlusGets 1
+
+# Game over
+Meow("\n" + "=" * 40)
+Meow(f"🏆 Final Score: {score} points")
+
+IfHungry score BiggerCat 8:
+    Purr("🐱 Amazing! You're a cat whisperer!")
+ElseIf score BiggerCat 4:
+    Meow("😸 Good job! The cats like you.")
+Else:
+    Hiss("😾 Better luck next time! The cats are judging you...")
+
+Meow("\nThanks for playing! 🐾")
