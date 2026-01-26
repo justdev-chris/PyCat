@@ -3,19 +3,19 @@ Meow("Welcome to PyCat Language!")
 Meow("=" * 40)
 
 name CatGets Beg("What's your name? ")
-Purr(f"Hello, {name}! ")
+Meow("Hello, " + name + "!")
 
 age CatGets ToCatYears(Beg("How old are you? "))
 
-IfHungry age BiggerCat 18:
+IfHungry age > 18:
     Meow("You're an adult!")
-ElseIf age BiggerCat 12:
+ElseIf age > 12:
     Meow("You're a teenager!")
 Otherwise:
     Meow("You're a kid!")
 
-Meow("\nCounting cats...")
+Meow("\nCounting to 5:")
 ForPrey i InLitterbox CatRange(1, 6):
-    Meow(f"Cat #{i}: {RandomCat()}")
+    Meow(f"Count: {i}")
 
 Meow("\nProgram finished!")
