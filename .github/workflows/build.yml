@@ -49,13 +49,9 @@ jobs:
         echo "Searching for .exe files:"
         Get-ChildItem -Recurse -Filter *.exe -ErrorAction SilentlyContinue | Format-Table Name, Directory
     
-    - name: Upload ANY executable found
+    - name: Upload executable 
       uses: actions/upload-artifact@v4
       with:
         name: pycat-build
-        path: |
-          dist/*.exe
-          dist/*.app
-          *.exe
-          build/*.exe
+        path: build/pycat.exe
         if-no-files-found: error
