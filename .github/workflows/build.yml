@@ -1,57 +1,71 @@
-name: Build PyCat
+name: Build PyCat - All Platforms
 
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
+  release:
+    types: [created]
 
 jobs:
-  build:
+  windows:
     runs-on: windows-latest
-    
     steps:
-    - uses: actions/checkout@v4
-    
-    - uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
-    
-    - name: Install PyInstaller
-      run: pip install pyinstaller
-    
-    - name: Build with .spec
-      run: |
-        echo "=== Building PyCat ==="
-        echo "Current directory:"
-        Get-Location
-        echo ""
-        echo "Files in current directory:"
-        Get-ChildItem
-        echo ""
-        echo "Spec file check:"
-        Select-String -Path pycat.spec -Pattern "name="
-        echo ""
-        
-        # Build
-        pyinstaller pycat.spec
-        
-        echo ""
-        echo "=== After build ==="
-        echo "dist folder contents:"
-        if (Test-Path "dist") {
-            Get-ChildItem "dist"
-        } else {
-            echo "dist folder doesn't exist"
-        }
-        
-        echo ""
-        echo "Searching for .exe files:"
-        Get-ChildItem -Recurse -Filter *.exe -ErrorAction SilentlyContinue | Format-Table Name, Directory
-    
-    - name: Upload executable 
-      uses: actions/upload-artifact@v4
-      with:
-        name: pycat-build
-        path: dist/*.exe
-        if-no-files-found: error
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install pyinstaller
+      - run: pyinstaller pycat.spec
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pycat-windows
+          path: dist/pycat.exe
+
+  macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install pyinstaller
+      - run: pyinstaller pycat.spec
+      - run: mv dist/pycat dist/pycat-macos
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pycat-macos
+          path: dist/pycat-macos
+
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install pyinstaller
+      - run: pyinstaller pycat.spec
+      - run: mv dist/pycat dist/pycat-linux
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pycat-linux
+          path: dist/pycat-linux
+
+  release:
+    needs: [windows, macos, linux]
+    runs-on: ubuntu-latest
+    if: github.event_name == 'release'
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - run: |
+          mv artifacts/pycat-windows/pycat.exe pycat-windows.exe
+          mv artifacts/pycat-macos/pycat-macos pycat-macos
+          mv artifacts/pycat-linux/pycat-linux pycat-linux
+      - uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            pycat-windows.exe
+            pycat-macos
+            pycat-linux
