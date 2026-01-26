@@ -1,1 +1,12 @@
+# demo.pycat
+Meow("Welcome to my program!")
 
+name CatGets Beg("What's your cat's name? ")
+age CatGets ToCatYears(Beg("How old is your cat? "))
+
+IfHungry age > 10:
+    Meow(f"{name} is a senior cat! 🐈")
+ElseIf age > 1:
+    Meow(f"{name} is an adult cat! 😸")
+Otherwise:
+    Meow(f"{name} is a kitten! 🐱")
