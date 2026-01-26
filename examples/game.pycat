@@ -1,5 +1,5 @@
 # Guess the Cat's Number Game
-Purr("🎮 Guess the Cat's Number!")
+Purr("Guess the Cat's Number!")
 Meow("=" * 40)
 
 score CatGets 0
@@ -24,7 +24,7 @@ Defur play_round(round_num):
         attempts PlusGets 1
         
         IfHungry guess SameAs secret:
-            Purr(f"🎉 Correct! It took {attempts} tries.")
+            Purr(f"Correct! It took {attempts} tries.")
             score PlusGets max_attempts MinusCat attempts PlusCat 1
             Fetch Pawsitive
         ElseIf guess SmallerCat secret:
@@ -32,7 +32,7 @@ Defur play_round(round_num):
         Otherwise:
             Meow("Too high! " + ChaseMouse())
     
-    Hiss(f"😿 Out of tries! Number was {secret}")
+    Hiss(f"Out of tries! Number was {secret}")
     Fetch Mew
 
 # Main game
@@ -59,13 +59,13 @@ WhileChasing round_num SmallerCat 4:
 
 # Game over
 Meow("\n" + "=" * 40)
-Meow(f"🏆 Final Score: {score} points")
+Meow(f"Final Score: {score} points")
 
 IfHungry score BiggerCat 8:
-    Purr("🐱 Amazing! You're a cat whisperer!")
+    Purr("Amazing! You're a cat whisperer!")
 ElseIf score BiggerCat 4:
-    Meow("😸 Good job! The cats like you.")
+    Meow("Good job! The cats like you.")
 Else:
-    Hiss("😾 Better luck next time! The cats are judging you...")
+    Hiss("Better luck next time! The cats are judging you...")
 
-Meow("\nThanks for playing! 🐾")
+Meow("\nThanks for playing!")
