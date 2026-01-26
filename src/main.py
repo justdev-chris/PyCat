@@ -10,7 +10,7 @@ except ImportError:
 
 def print_help():
     """Show help message"""
-    print("🐱 PyCat - Cat-themed Programming Language")
+    print(" PyCat - Cat-themed Programming Language")
     print("=" * 40)
     print("Usage: pycat <file.pycat>")
     print("       pycat install <package>")
@@ -23,7 +23,7 @@ def print_help():
 
 def print_examples():
     """List available examples"""
-    print("🐱 PyCat Examples")
+    print(" PyCat Examples")
     print("=" * 40)
     examples = [
         "hello.pycat     - Hello World",
@@ -37,25 +37,25 @@ def print_examples():
 
 def pycat_install(package):
     """Install packages for PyCat (like pip install)"""
-    print(f"🐱 Installing {package} for PyCat...")
+    print(f" Installing {package} for PyCat...")
     
     try:
         # Use pip to install
         subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-        print(f"✅ Installed {package}")
-        print(f"\n💡 Now in PyCat:")
+        print(f" Installed {package}")
+        print(f"\n Now in PyCat:")
         print(f"  ImportCatnip {package}")
         
     except subprocess.CalledProcessError:
-        print(f"❌ Failed to install {package}")
+        print(f" Failed to install {package}")
         print("Make sure pip is installed and you have internet")
     except Exception as e:
-        print(f"❌ Error: {e}")
+        print(f" Error: {e}")
 
 def run_file(filename):
     """Run a PyCat file"""
     if not os.path.exists(filename):
-        print(f"❌ File '{filename}' not found!")
+        print(f" File '{filename}' not found!")
         sys.exit(1)
     
     try:
@@ -79,7 +79,7 @@ def run_file(filename):
 def run():
     """Main entry point"""
     if len(sys.argv) < 2:
-        print("❌ Error: No command provided")
+        print(" Error: No command provided")
         print_help()
         sys.exit(1)
     
@@ -96,7 +96,7 @@ def run():
     
     elif command == 'install':
         if len(sys.argv) < 3:
-            print("❌ Error: Package name required")
+            print(" Error: Package name required")
             print("Usage: pycat install <package>")
             sys.exit(1)
         pycat_install(sys.argv[2])
