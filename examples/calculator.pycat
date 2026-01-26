@@ -1,0 +1,42 @@
+# PyCat Calculator
+Purr("🧮 PyCat Calculator")
+Meow("=" * 40)
+
+WhileChasing Pawsitive:
+    Meow("\nOptions:")
+    Meow("1. Add (+)")
+    Meow("2. Subtract (-)")
+    Meow("3. Multiply (*)")
+    Meow("4. Divide (/)")
+    Meow("5. Exit")
+    
+    choice CatGets Beg("\nChoose (1-5): ")
+    
+    IfHungry choice SameAs "5":
+        Meow("Goodbye! 🐱")
+        Scratch
+    
+    num1 CatGets ToFloatCat(Beg("First number: "))
+    num2 CatGets ToFloatCat(Beg("Second number: "))
+    
+    IfHungry choice SameAs "1":
+        result CatGets num1 PlusCat num2
+        op CatGets "+"
+    ElseIf choice SameAs "2":
+        result CatGets num1 MinusCat num2
+        op CatGets "-"
+    ElseIf choice SameAs "3":
+        result CatGets num1 TimesCat num2
+        op CatGets "*"
+    ElseIf choice SameAs "4":
+        IfHungry num2 SameAs 0:
+            Hiss("Cannot divide by zero!")
+            KeepGoing
+        result CatGets num1 DivideCat num2
+        op CatGets "/"
+    Otherwise:
+        Hiss("Invalid choice!")
+        KeepGoing
+    
+    Meow(f"\n{num1} {op} {num2} = {result}")
+    Meow("-" * 30)
