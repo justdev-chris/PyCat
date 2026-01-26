@@ -7,12 +7,12 @@ PyCat is a fun, cat-themed programming language that compiles to Python. Write c
 ## 🚀 Quick Start
 
 ### Run a PyCat program:
-```bash
+```
 pycat hello.pycat
 ```
 
 ### Example `hello.pycat`:
-```python
+```
 Meow("Hello from PyCat! 🐱")
 name CatGets Beg("What's your cat's name? ")
 Purr("Hello, " CatSpeak(name) "!")
@@ -81,16 +81,16 @@ result CatGets x TimesCat y
 `` ``
 chmod +x pycat
 `` ``
-./pycat hello.pycat
+./pycat --help
 `` 
 - Or install globally
 `` 
 sudo mv pycat /usr/local/bin/
 `` ``
-pycat hello.pycat
+pycat --help
 ``
 ### Method 2: Build from Source
-```bash
+```
 git clone https://github.com/justdev-chris/pycat.git
 cd pycat
 pip install pyinstaller
