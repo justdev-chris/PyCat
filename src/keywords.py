@@ -166,7 +166,7 @@ def translate(code: str) -> str:
             code = re.sub(pattern, python_word, code)
     
     # Second pass: handle special functions
-    code = code.replace('Purr(', 'print(":3 " + str(')
+    code = code.replace('Purr(', 'print(":3 " + str(') + ')')
     code = code.replace('Hiss(', 'print(":( " + str(')
     code = code.replace('CatNap(', 'time.sleep(')
     code = code.replace("ChaseMouse()", "'bonuscats'")
