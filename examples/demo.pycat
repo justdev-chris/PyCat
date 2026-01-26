@@ -2,7 +2,7 @@
 # PyCat Demo - Showcasing All Features
 # ============================================
 
-Meow("🐱 Welcome to PyCat Language!")
+Meow("Welcome to PyCat Language!")
 Meow("=" * 40)
 
 # ========== VARIABLES ==========
@@ -46,7 +46,7 @@ Meow("Counting mice...")
 
 ForPrey i InLitterbox CatRange(1, 6):
     IfHungry i SameAs 3:
-        Meow(f"🐭 Found mouse #{i}!")
+        Meow(f"Found mouse #{i}!")
         Scratch  # break
     Otherwise:
         Meow(f"Looking... {i}")
@@ -86,8 +86,8 @@ Meow(f"Color: {cat_info['color']}")
 # ========== SPECIAL FUNCTIONS ==========
 Meow("\n8. Special Cat Functions:")
 
-Purr("This is a happy message!")  # 😺 prefix
-Hiss("This is a warning!")       # 😾 prefix
+Purr("This is a happy message!")  # Happy prefix
+Hiss("This is a warning!")       # Warning prefix
 
 Meow(f"Random cat: {RandomCat()}")
 Meow(f"Chasing: {ChaseMouse()}")
@@ -98,11 +98,11 @@ hungry CatGets Pawsitive
 has_food CatGets Mew
 
 IfHungry hungry AndCat NotCat has_food:
-    Meow("😿 Cat is hungry and has no food!")
+    Meow("Cat is hungry and has no food!")
 ElseIf hungry AndCat has_food:
-    Meow("😸 Cat is eating!")
+    Meow("Cat is eating!")
 Otherwise:
-    Meow("😴 Cat is sleeping...")
+    Meow("Cat is sleeping...")
 
 # ========== TYPE CONVERSION ==========
 Meow("\n10. Type Conversion:")
@@ -129,12 +129,12 @@ secret CatGets 7
 guess CatGets ToCatYears(Beg("Guess a number 1-10: "))
 
 IfHungry guess SameAs secret:
-    Purr("🎉 You guessed right!")
+    Purr("You guessed right!")
 Otherwise:
     Hiss(f"Wrong! It was {secret}")
 
 # ========== FINAL ==========
 Meow("\n" + "=" * 40)
-Meow("🐾 End of PyCat Demo!")
+Meow("End of PyCat Demo!")
 Meow("Thanks for playing with PyCat!")
-Purr("Meow! 🐱")
+Purr("Meow!")
