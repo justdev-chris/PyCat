@@ -2,7 +2,7 @@
 
 > *"Meow means print, CatGets means =, and everything is cats!"*
 
-PyCat is a fun, cat-themed programming language that compiles to Python. Write code with cat-themed keywords and watch it run!
+PyCat is a fun, cat-themed programming language that compiles to Python. Write code with cat-themed keywords and watch it run! :3
 
 ## 🚀 Quick Start
 
