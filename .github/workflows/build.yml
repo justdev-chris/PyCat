@@ -2,20 +2,21 @@ name: Build PyCat
 
 on:
   push:
-    branches: [main]
+    branches: [main, master]
   pull_request:
-    branches: [main]
+    branches: [main, master]
+  workflow_dispatch:
 
 jobs:
-  build:
+  build-windows:
     runs-on: windows-latest
-
+    
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     
     - name: Setup Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.10'
     
@@ -24,21 +25,17 @@ jobs:
         python -m pip install --upgrade pip
         pip install pyinstaller
     
-    - name: Create entry point
-      run: |
-        # Create a simple entry point in root
-        echo "import sys" > pycat_entry.py
-        echo "sys.path.insert(0, 'src')" >> pycat_entry.py
-        echo "from main import run" >> pycat_entry.py
-        echo "if __name__ == '__main__':" >> pycat_entry.py
-        echo "    run()" >> pycat_entry.py
-    
     - name: Build executable
       run: |
+        # Build using your existing pycat_entry.py
         pyinstaller --onefile --name pycat pycat_entry.py
     
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
-        name: pycat-executable
+        name: pycat-windows
         path: dist/pycat.exe
+        # Tag and create GitHub release
+        git tag v1.0.${{ github.run_number }}
+        git push origin v1.0.${{ github.run_number }}
+      continue-on-error: true
