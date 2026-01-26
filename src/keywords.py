@@ -170,7 +170,7 @@ def translate(code: str) -> str:
     code = code.replace('Hiss(', 'print(":( " + str(')
     code = code.replace('CatNap(', 'time.sleep(')
     code = code.replace('ChaseMouse()', 'random.choice([":>", ":0", "<:>"])')
-    code = code.replace('RandomCat()', 'random.choice([":3", ":)", ":>", ":\", ":1", ":33"])')
+    code = code.replace("RandomCat()", "random.choice([':3', ':)', ':>', ':\\', ':1', ':33'])")
     code = code.replace('CatNow()', 'datetime.datetime.now()')
     
     # Add imports if needed
