@@ -1,7 +1,4 @@
-# ============================================
-# PyCat Demo - Showcasing All Features
-# ============================================
-
+# PyCat Demo - Working Version
 Meow("Welcome to PyCat Language!")
 Meow("=" * 40)
 
@@ -10,7 +7,7 @@ Meow("\n1. Variables:")
 name CatGets "Whiskers"
 age CatGets 3
 weight CatGets 4.2
-is_cat CatGets Pawsitive
+is_cat CatGets True
 
 Meow(f"Name: {name}")
 Meow(f"Age: {age} years")
@@ -22,32 +19,32 @@ Meow("\n2. Math Operations:")
 a CatGets 10
 b CatGets 3
 
-Meow(f"{a} PlusCat {b} = {a PlusCat b}")
-Meow(f"{a} MinusCat {b} = {a MinusCat b}")
-Meow(f"{a} TimesCat {b} = {a TimesCat b}")
-Meow(f"{a} DivideCat {b} = {a DivideCat b}")
-Meow(f"{a} ModCat {b} = {a ModCat b}")
+Meow(f"{a} + {b} = {a + b}")
+Meow(f"{a} - {b} = {a - b}")
+Meow(f"{a} * {b} = {a * b}")
+Meow(f"{a} / {b} = {a / b}")
+Meow(f"{a} % {b} = {a % b}")
 
 # ========== COMPARISONS ==========
 Meow("\n3. Comparisons:")
-IfHungry age BiggerCat 2:
+IfHungry age > 2:
     Meow(f"{name} is older than 2 years")
 Otherwise:
     Meow(f"{name} is 2 or younger")
 
-IfHungry name SameAs "Whiskers":
+IfHungry name == "Whiskers":
     Meow("This cat is named Whiskers!")
 Otherwise:
     Meow("This cat has a different name")
 
 # ========== LOOPS ==========
 Meow("\n4. Loops:")
-Meow("Counting mice...")
+Meow("Counting...")
 
-ForPrey i InLitterbox CatRange(1, 6):
-    IfHungry i SameAs 3:
-        Meow(f"Found mouse #{i}!")
-        Scratch  # break
+ForPrey i InLitterbox range(1, 6):
+    IfHungry i == 3:
+        Meow(f"Found number {i}!")
+        Scratch
     Otherwise:
         Meow(f"Looking... {i}")
 
@@ -56,7 +53,7 @@ Meow("\n5. Functions:")
 
 Defur feed_cat(cat_name, treats):
     Meow(f"Feeding {cat_name} with {treats} treats...")
-    total CatGets treats TimesCat 2
+    total CatGets treats * 2
     Fetch total
 
 treats_given CatGets feed_cat(name, 3)
@@ -64,38 +61,29 @@ Meow(f"Total treats: {treats_given}")
 
 # ========== LISTS ==========
 Meow("\n6. Lists:")
-cat_toys CatGets CatList(["yarn", "laser", "ball", "feather"])
+cat_toys CatGets ["yarn", "laser", "ball", "feather"]
 Meow(f"Toys: {cat_toys}")
-Meow(f"Number of toys: {CountWhiskers(cat_toys)}")
+Meow(f"Number of toys: {len(cat_toys)}")
 
 Meow("Playing with toys:")
 ForPrey toy InLitterbox cat_toys:
     Meow(f"  Playing with {toy}...")
 
 # ========== DICTIONARIES ==========
-Meow("\n7. Dictionaries (Cat Diaries):")
-cat_info CatGets CatDiary({
+Meow("\n7. Dictionaries:")
+cat_info CatGets {
     "name": "Mittens",
     "color": "calico",
     "lives_left": 7
-})
+}
 
-Meow(f"Cat diary: {cat_info}")
+Meow(f"Cat info: {cat_info}")
 Meow(f"Color: {cat_info['color']}")
 
-# ========== SPECIAL FUNCTIONS ==========
-Meow("\n8. Special Cat Functions:")
-
-Purr("This is a happy message!")  # Happy prefix
-Hiss("This is a warning!")       # Warning prefix
-
-Meow(f"Random cat: {RandomCat()}")
-Meow(f"Chasing: {ChaseMouse()}")
-
 # ========== CONDITIONAL LOGIC ==========
-Meow("\n9. Complex Logic:")
-hungry CatGets Pawsitive
-has_food CatGets Mew
+Meow("\n8. Complex Logic:")
+hungry CatGets True
+has_food CatGets False
 
 IfHungry hungry AndCat NotCat has_food:
     Meow("Cat is hungry and has no food!")
@@ -105,36 +93,25 @@ Otherwise:
     Meow("Cat is sleeping...")
 
 # ========== TYPE CONVERSION ==========
-Meow("\n10. Type Conversion:")
+Meow("\n9. Type Conversion:")
 num_str CatGets "9"
-num_int CatGets ToCatYears(num_str)
-num_float CatGets ToFloatCat(num_str)
+num_int CatGets int(num_str)
+num_float CatGets float(num_str)
 
 Meow(f"String '{num_str}' to int: {num_int}")
 Meow(f"String '{num_str}' to float: {num_float}")
-Meow(f"As string: {CatSpeak(num_int)} lives")
+Meow(f"As string: {str(num_int)} lives")
 
 # ========== WHILE LOOP ==========
-Meow("\n11. While Loop:")
+Meow("\n10. While Loop:")
 counter CatGets 0
-Meow("Counting naps...")
+Meow("Counting...")
 
-WhileChasing counter SmallerCat 3:
-    Meow(f"  Nap #{counter PlusCat 1}")
-    counter PlusGets 1
-
-# ========== GAME EXAMPLE ==========
-Meow("\n12. Mini Game: Guess the Number")
-secret CatGets 7
-guess CatGets ToCatYears(Beg("Guess a number 1-10: "))
-
-IfHungry guess SameAs secret:
-    Purr("You guessed right!")
-Otherwise:
-    Hiss(f"Wrong! It was {secret}")
+WhileChasing counter < 3:
+    Meow(f"  Count #{counter + 1}")
+    counter += 1
 
 # ========== FINAL ==========
 Meow("\n" + "=" * 40)
 Meow("End of PyCat Demo!")
 Meow("Thanks for playing with PyCat!")
-Purr("Meow!")
