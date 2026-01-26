@@ -24,13 +24,13 @@ jobs:
       run: |
         echo "=== Building PyCat ==="
         echo "Current directory:"
-        pwd
+        Get-Location
         echo ""
         echo "Files in current directory:"
-        ls -la
+        Get-ChildItem
         echo ""
-        echo "Spec file contents:"
-        cat pycat.spec | grep -A5 -B5 "name="
+        echo "Spec file check:"
+        Select-String -Path pycat.spec -Pattern "name="
         echo ""
         
         # Build
@@ -39,10 +39,15 @@ jobs:
         echo ""
         echo "=== After build ==="
         echo "dist folder contents:"
-        ls -la dist/ || echo "dist folder doesn't exist"
+        if (Test-Path "dist") {
+            Get-ChildItem "dist"
+        } else {
+            echo "dist folder doesn't exist"
+        }
+        
         echo ""
-        echo "All .exe files:"
-        find . -name "*.exe" -type f 2>/dev/null || echo "No .exe files found"
+        echo "Searching for .exe files:"
+        Get-ChildItem -Recurse -Filter *.exe -ErrorAction SilentlyContinue | Format-Table Name, Directory
     
     - name: Upload ANY executable found
       uses: actions/upload-artifact@v4
