@@ -1,38 +1,34 @@
 import sys
 import os
 
-# Absolute import - works in PyInstaller
+# Import translator
 try:
     from keywords import translate
-except ImportError:
-    # Fallback for development
+except:
     from .keywords import translate
 
 def run():
+    # No file = error
     if len(sys.argv) < 2:
-        print("Usage: pycat <filename.pycat>")
-        print("       pycat --help")
-        return
+        print("Error: Need filename")
+        print("Use: pycat file.pycat")
+        sys.exit(1)
     
+    # Help
     if sys.argv[1] in ['-h', '--help']:
-        print("PyCat - Cat-themed language")
-        print("Usage: pycat filename.pycat")
-        return
+        print("PyCat: Run with: pycat file.pycat")
+        sys.exit(0)
     
-    filename = sys.argv[1]
-    
-    if not os.path.exists(filename):
-        print(f"Error: File '{filename}' not found")
-        return
-    
+    # Run file
     try:
-        with open(filename, 'r', encoding='utf-8') as f:
-            pycat_code = f.read()
+        with open(sys.argv[1], 'r') as f:
+            code = f.read()
         
-        python_code = translate(pycat_code)
+        python_code = translate(code)
         exec(python_code)
     except Exception as e:
-        print(f"PyCat Error: {type(e).__name__}: {e}")
+        print(f"Error: {e}")
+        sys.exit(1)
 
 if __name__ == "__main__":
     run()
