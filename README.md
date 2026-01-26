@@ -78,12 +78,15 @@ result CatGets x TimesCat y
 # If your on Linux/MacOS,
   ``
  curl -L -o pycat https://github.com/justdev-chris/pycat/releases/latest/download/pycat-macos
+`` ``
 chmod +x pycat
+`` ``
 ./pycat hello.pycat
-``
+`` 
 - Or install globally
-``
+`` 
 sudo mv pycat /usr/local/bin/
+`` ``
 pycat hello.pycat
 ``
 ### Method 2: Build from Source
