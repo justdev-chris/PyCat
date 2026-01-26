@@ -29,5 +29,5 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: pycat-windows
-        path: dist/pycat.exe
+        path: dist/*.exe
         if-no-files-found: error  # This will fail if file doesn't exist
