@@ -1,3 +1,6 @@
+<img src="icon.png" width="100" align="center"> 
+
+
 # 🐱 PyCat - A Cat-Themed Programming Language
 
 > *"Meow means print, CatGets means =, and everything is cats!"*
