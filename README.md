@@ -1,4 +1,6 @@
-<img src="IMG_1404.png" width="100" align="center"> 
+<p align="center">
+  <img src="IMG_1404" width="100">
+</p>
 
 
 # 🐱 PyCat - A Cat-Themed Programming Language
